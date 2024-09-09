@@ -1,5 +1,6 @@
 import { FC, useState } from "react";
 import { Person } from "./models/Person";
+import "./form.css"
 
 export const MakeNewPerson: FC<{
   addNewPerson: (newPerson: Person) => void;
@@ -19,10 +20,19 @@ export const MakeNewPerson: FC<{
           setName("");
         }}
       >
-        <label>
+        <label className="form-label">
           New Person Name
-          <input value={name} onChange={(e) => setName(e.target.value)} />
+          <input
+            style={{
+              transition: "all 5s"
+            }}
+            className="form-control"
+            value={name}
+            onChange={(e) => setName(e.target.value)}
+          />
         </label>
+
+        <button className="btn btn-primary">Submit</button>
       </form>
     </div>
   );

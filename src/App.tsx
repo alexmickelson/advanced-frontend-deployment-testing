@@ -1,27 +1,28 @@
-import { useState } from "react";
-import "./App.css";
+// import "./App.css";
 import { MakeNewPerson } from "./MakeNewPerson";
-import { Person } from "./models/Person";
 import { PeopleList } from "./PeopleList";
+import { usePeopleManagement } from "./usePeopleManagement";
 
 function App() {
-  const [people, setPeople] = useState<Person[]>([]);
-
-  const [selectedPerson, setSelectedPerson] = useState<Person | undefined>(
-    undefined
-  );
-  const addNewPerson = (newPerson: Person) => {
-    setPeople((oldPeople) => [newPerson, ...oldPeople]);
-  };
+  const { people, selectedPerson, setSelectedPerson, addNewPerson } =
+    usePeopleManagement();
 
   return (
     <>
-      <PeopleList
-        people={people}
-        selectedPerson={selectedPerson}
-        setSelectedPerson={setSelectedPerson}
-      />
-      <MakeNewPerson addNewPerson={addNewPerson} />
+      <div className="container">
+        <div className="row">
+          <div className="col">
+            <PeopleList
+              people={people}
+              selectedPerson={selectedPerson}
+              setSelectedPerson={setSelectedPerson}
+            />
+          </div>
+          <div className=" col-lg-2 col-md-3 col-sm-4 col-12 ">
+            <MakeNewPerson addNewPerson={addNewPerson} />
+          </div>
+        </div>
+      </div>
     </>
   );
 }
