@@ -1,35 +1,29 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
-import './App.css'
+import { useState } from "react";
+import "./App.css";
+import { MakeNewPerson } from "./MakeNewPerson";
+import { Person } from "./models/Person";
+import { PeopleList } from "./PeopleList";
 
 function App() {
-  const [count, setCount] = useState(0)
+  const [people, setPeople] = useState<Person[]>([]);
+
+  const [selectedPerson, setSelectedPerson] = useState<Person | undefined>(
+    undefined
+  );
+  const addNewPerson = (newPerson: Person) => {
+    setPeople((oldPeople) => [newPerson, ...oldPeople]);
+  };
 
   return (
     <>
-      <div>
-        <a href="https://vitejs.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
-      </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.tsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
+      <PeopleList
+        people={people}
+        selectedPerson={selectedPerson}
+        setSelectedPerson={setSelectedPerson}
+      />
+      <MakeNewPerson addNewPerson={addNewPerson} />
     </>
-  )
+  );
 }
 
-export default App
+export default App;
