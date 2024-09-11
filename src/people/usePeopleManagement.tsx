@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { Person } from "./models/Person";
+import { Person } from "../models/Person";
 
 export const usePeopleManagement = () => {
   const [people, setPeople] = useState<Person[]>([]);

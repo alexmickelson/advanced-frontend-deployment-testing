@@ -1,0 +1,14 @@
+$primary: #1e3a52;
+
+@import "bootstrap/scss/functions";
+@import "bootstrap/scss/variables";
+@import "bootstrap/scss/variables-dark";
+
+
+$custom-colors: (
+  "alexcolor": hsl(166, 56%, 28%)
+);
+
+$theme-colors: map-merge($theme-colors, $custom-colors);
+
+@import "bootstrap/scss/bootstrap";
