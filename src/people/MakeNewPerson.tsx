@@ -13,6 +13,7 @@ export const MakeNewPerson: FC<{
   return (
     <div>
       <form
+      className="bg-alexcolor-subtle"
         onSubmit={(e) => {
           e.preventDefault();
           const person: Person = {
@@ -29,7 +30,8 @@ export const MakeNewPerson: FC<{
             style={{
               transition: "all 5s",
             }}
-            className="form-control"
+            name={"Name of Person"}
+            className="form-control is-valid"
             value={name}
             onChange={(e) => setName(e.target.value)}
           />
@@ -39,8 +41,8 @@ export const MakeNewPerson: FC<{
           <input
             className="form-check-input"
             type="radio"
-            name="flexRadioDefault"
-            id="flexRadioDefault1"
+            name="nonCheckedInput"
+            id="nonCheckedInput"
             onChange={(e) => {
               console.log("checking default radio");
               console.log(e.target.value);
@@ -48,7 +50,7 @@ export const MakeNewPerson: FC<{
             }}
             checked={selectedOption === "radio option"}
           />
-          <label className="form-check-label" htmlFor="flexRadioDefault1">
+          <label className="form-check-label" htmlFor="nonCheckedInput">
             Default radio
           </label>
         </div>
@@ -56,12 +58,12 @@ export const MakeNewPerson: FC<{
           <input
             className="form-check-input"
             type="radio"
-            name="flexRadioDefault"
-            id="flexRadioDefault2"
+            name="checkedInput"
+            id="checkedInput"
             onChange={() => setSelectedOption("default radio option")}
             checked={selectedOption === "default radio option"}
           />
-          <label className="form-check-label" htmlFor="flexRadioDefault2">
+          <label className="form-check-label" htmlFor="checkedInput">
             Default checked radio
           </label>
         </div>
