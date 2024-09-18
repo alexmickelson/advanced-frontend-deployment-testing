@@ -1,19 +1,33 @@
-import { FC, useState } from "react";
+import { FC, useEffect, useState } from "react";
 import { Person } from "../models/Person";
 import "./form.css";
+
+const useDebounce = (debounceFunction: () => void) => {
+  useEffect(() => {
+    const timeoutId = setTimeout(debounceFunction, 1000);
+
+    const doBeforeNextTime = () => {
+      clearTimeout(timeoutId);
+    };
+    return doBeforeNextTime;
+  }, [debounceFunction]);
+};
 
 export const MakeNewPerson: FC<{
   addNewPerson: (newPerson: Person) => void;
 }> = ({ addNewPerson }) => {
   const [name, setName] = useState("");
+  const [debounceMessage, setDebounceMessage] = useState("");
   const [selectedOption, setSelectedOption] = useState<
     "radio option" | "default radio option"
   >("default radio option");
 
+  useDebounce(() => setDebounceMessage("something " + name));
+
   return (
     <div>
       <form
-      className="bg-alexcolor-subtle"
+        className="bg-alexcolor-subtle"
         onSubmit={(e) => {
           e.preventDefault();
           const person: Person = {
@@ -33,9 +47,12 @@ export const MakeNewPerson: FC<{
             name={"Name of Person"}
             className="form-control is-valid"
             value={name}
-            onChange={(e) => setName(e.target.value)}
+            onChange={(e) => {
+              setName(e.target.value);
+            }}
           />
         </label>
+        <div>{debounceMessage}</div>
 
         <div className="form-check">
           <input

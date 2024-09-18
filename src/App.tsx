@@ -1,39 +1,20 @@
-// import "./App.css";
-import { Button } from "./components/Button";
-import { TwoColumnsLayout } from "./components/TwoColumnsLayout";
-import { MakeNewPerson } from "./people/MakeNewPerson";
-import { ItemList } from "./people/ItemList";
-import { usePeopleManagement } from "./people/usePeopleManagement";
-import { MyModal } from "./components/myModal/MyModal";
-import { useMyModal } from "./components/myModal/useMyModal";
+import { Route, Routes } from "react-router";
+import { PeoplePage } from "./pages/PeoplePage";
 
 function App() {
-  const { people, selectedPerson, setSelectedPerson, addNewPerson } =
-    usePeopleManagement();
-
-  const modalControl = useMyModal();
-
   return (
-    <>
-      <div className=" vh-100">
-        {/* <i className="bi bi-archive"></i> */}
-        <Button onClick={() => modalControl.toggleModal()}>Click Me</Button>
-
-        <TwoColumnsLayout
-          leftSide={
-            <ItemList
-              people={people}
-              selectedPerson={selectedPerson}
-              setSelectedPerson={setSelectedPerson}
-              getName={(p) => p?.name ?? ""}
-              getId={(p) => p?.id ?? ""}
-            />
-          }
-          rightSide={<MakeNewPerson addNewPerson={addNewPerson} />}
-        />
-        <MyModal control={modalControl} />
-      </div>
-    </>
+    <div>
+      <header></header>
+      <main>
+        <nav></nav>
+        <Routes>
+          <Route path="/" element={<PeoplePage />} />
+          <Route path="/otherpage" element={<div>on other page</div>} />
+          <Route path="*" element={<div>404 not found</div>} />
+        </Routes>
+      </main>
+      <footer></footer>
+    </div>
   );
 }
 
