@@ -5,3 +5,5 @@ README.md
 .gitignore
 Dockerfile
 docker-compose.yml
+kube/
+.github/
