@@ -20,7 +20,7 @@ spec:
     spec:
       containers:
       - name: demo-app
-        image: alexmickelson/demo-app:${IMAGE_TAG}
+        image: alexmickelson/alex-react:${IMAGE_TAG}
         ports:
         - containerPort: 80
         readinessProbe:
