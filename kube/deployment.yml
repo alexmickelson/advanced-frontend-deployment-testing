@@ -20,7 +20,7 @@ spec:
     spec:
       containers:
       - name: demo-app
-        image: alexmickelson/demo-app:latest
+        image: alexmickelson/demo-app:${IMAGE_TAG}
         ports:
         - containerPort: 80
         readinessProbe:

@@ -5,7 +5,7 @@ metadata:
   namespace: alex
 spec:
   rules:
-  - host: 
+  - host: alex-react.duckdns.org
     http:
       paths:
       - path: /

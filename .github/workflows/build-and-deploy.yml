@@ -24,12 +24,12 @@ jobs:
         run: |
           docker push alexmickelson/alex-react:${{ github.run_number }}
 
-      # - name: Deploy to Kubernetes
-      #   run: |
-      #     export IMAGE_TAG=${{ github.run_number }}
+      - name: Deploy to Kubernetes
+        run: |
+          export IMAGE_TAG=${{ github.run_number }}
 
-      #     for file in kube/*; do 
-      #         cat "$file" | envsubst | kubectl apply -f -; 
-      #     done
+          for file in kube/*; do 
+              cat "$file" | envsubst | kubectl apply -f -; 
+          done
 
 
