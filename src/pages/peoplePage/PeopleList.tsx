@@ -1,10 +1,7 @@
-import { FC, ReactNode } from "react";
 import { ItemList } from "../../components/ItemList";
 import { usePeopleContext } from "../../context/people/usePeopleContext";
 
-export const PeopleList: FC<{
-  DetailComponent: (props: { person: string }) => ReactNode;
-}> = ({ DetailComponent }) => {
+export const PeopleList  = () => {
   const { people, selectedPerson, setSelectedPerson } = usePeopleContext();
   return (
     <>
@@ -15,7 +12,6 @@ export const PeopleList: FC<{
         getName={(p) => p?.name ?? ""}
         getId={(p) => p?.id ?? ""}
       />
-      {selectedPerson && <DetailComponent person={selectedPerson.name} />}
     </>
   );
 };

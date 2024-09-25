@@ -27,7 +27,7 @@ export const PeoplePage = () => {
         </button>
         <Button onClick={() => modalControl.toggleModal()}>Click Me</Button>
         <TwoColumnsLayout
-          leftSide={<PeopleList DetailsComponent={Details} />}
+          leftSide={<PeopleList />}
           rightSide={
             <ErrorBoundary fallbackRender={() => <div>something broke</div>}>
               <MakeNewPerson startingValueVariable={"default radio option"} />
@@ -54,5 +54,3 @@ export const PeoplePage = () => {
   );
 };
 
-
-export const Details = (selectedPerson: string) => <div>details</div>
