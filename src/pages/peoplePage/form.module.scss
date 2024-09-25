@@ -1,0 +1,8 @@
+@import "../custom.scss";
+
+.formControl {
+  &:hover {
+    // background-color: hwb(205 33% 36%);
+    @extend .bg-info;
+  }
+}

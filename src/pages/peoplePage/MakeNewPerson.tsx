@@ -1,6 +1,7 @@
 import { FC, useEffect, useState } from "react";
 import { Person } from "../models/Person";
-import "./form.css";
+import classes from "./form.module.scss";
+import { usePeopleContext } from "../context/people/usePeopleContext";
 
 const useDebounce = (debounceFunction: () => void) => {
   useEffect(() => {
@@ -14,13 +15,15 @@ const useDebounce = (debounceFunction: () => void) => {
 };
 
 export const MakeNewPerson: FC<{
-  addNewPerson: (newPerson: Person) => void;
-}> = ({ addNewPerson }) => {
+  startingValueVariable: "radio option" | "default radio option" | "";
+}> = ({ startingValueVariable }) => {
+  const { addNewPerson } = usePeopleContext();
   const [name, setName] = useState("");
+
   const [debounceMessage, setDebounceMessage] = useState("");
   const [selectedOption, setSelectedOption] = useState<
-    "radio option" | "default radio option"
-  >("default radio option");
+    "radio option" | "default radio option" | ""
+  >(startingValueVariable);
 
   useDebounce(() => setDebounceMessage("something " + name));
 
@@ -45,7 +48,7 @@ export const MakeNewPerson: FC<{
               transition: "all 5s",
             }}
             name={"Name of Person"}
-            className="form-control is-valid"
+            className={"form-control is-valid " + classes.formControl}
             value={name}
             onChange={(e) => {
               setName(e.target.value);
@@ -58,12 +61,12 @@ export const MakeNewPerson: FC<{
           <input
             className="form-check-input"
             type="radio"
-            name="nonCheckedInput"
+            name="checkedInput"
             id="nonCheckedInput"
             onChange={(e) => {
               console.log("checking default radio");
               console.log(e.target.value);
-              // setSelectedOption("radio option")
+              setSelectedOption("radio option");
             }}
             checked={selectedOption === "radio option"}
           />

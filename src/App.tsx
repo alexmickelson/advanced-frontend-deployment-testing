@@ -1,5 +1,6 @@
 import { Route, Routes } from "react-router";
-import { PeoplePage } from "./pages/PeoplePage";
+import { PeoplePage } from "./pages/peoplePage/PeoplePage";
+import { OtherPage } from "./pages/OtherPage";
 
 function App() {
   return (
@@ -9,7 +10,8 @@ function App() {
         <nav></nav>
         <Routes>
           <Route path="/" element={<PeoplePage />} />
-          <Route path="/otherpage" element={<div>on other page</div>} />
+          <Route path="/otherpage" element={<OtherPage />} />
+          <Route path="/otherpage/:id" element={<OtherPage />} />
           <Route path="*" element={<div>404 not found</div>} />
         </Routes>
       </main>

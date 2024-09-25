@@ -5,11 +5,14 @@ import App from "./App.tsx";
 import "./custom.scss";
 import "bootstrap";
 import "bootstrap-icons/font/bootstrap-icons.css";
+import { PeopleContextProvider } from "./context/people/PeopleContextProvider.tsx";
 
 createRoot(document.getElementById("root")!).render(
   <StrictMode>
     <BrowserRouter>
-      <App />
+      <PeopleContextProvider>
+        <App />
+      </PeopleContextProvider>
     </BrowserRouter>
   </StrictMode>
 );
