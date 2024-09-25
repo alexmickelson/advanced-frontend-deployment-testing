@@ -1,7 +1,7 @@
 import { FC, useEffect, useState } from "react";
-import { Person } from "../models/Person";
 import classes from "./form.module.scss";
-import { usePeopleContext } from "../context/people/usePeopleContext";
+import { usePeopleContext } from "../../context/people/usePeopleContext";
+import { Person } from "../../models/Person";
 
 const useDebounce = (debounceFunction: () => void) => {
   useEffect(() => {

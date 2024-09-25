@@ -1,6 +1,6 @@
-import { Person } from "./models/Person";
+import { Person } from "../models/Person";
 
-const getPeopleFromApi = async (): Promise<Person[]> => {
+export const getPeopleFromApi = async (): Promise<Person[]> => {
   // await
   await new Promise((resolve) => setTimeout(resolve, 1000));
 
