@@ -26,11 +26,10 @@ jobs:
 
       - name: Deploy to Kubernetes
         run: |
-          # echo "${HOME}/.nix-profile/bin" >> $GITHUB_PATH
-          # echo "/nix/var/nix/profiles/default/bin" >> $GITHUB_PATH
+          # fish_add_path "~/.nix-profile/bin"
+          # fish_add_path "/nix/var/nix/profiles/default/bin"
 
-          fish_add_path "~/.nix-profile/bin"
-          fish_add_path "/nix/var/nix/profiles/default/bin"
+          export PATH=$PATH:~/.nix-profile/bin
 
 
           export IMAGE_TAG=${{ github.run_number }}
