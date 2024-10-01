@@ -46,7 +46,7 @@ export const PeoplePage = () => {
               // };
             }}
           >
-            <TextInput control={notesControl} />
+            <TextInput label="Note Input" control={notesControl} />
           </form>
         </div>
       </div>
