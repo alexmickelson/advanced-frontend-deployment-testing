@@ -6,12 +6,15 @@ import "./custom.scss";
 import "bootstrap";
 import "bootstrap-icons/font/bootstrap-icons.css";
 import { PeopleContextProvider } from "./context/people/PeopleContextProvider.tsx";
+import { ItemsContextProvider } from "./pages/itemApi/ItemsContextProvider.tsx";
 
 createRoot(document.getElementById("root")!).render(
   <StrictMode>
     <BrowserRouter>
       <PeopleContextProvider>
-        <App />
+        <ItemsContextProvider>
+          <App />
+        </ItemsContextProvider>
       </PeopleContextProvider>
     </BrowserRouter>
   </StrictMode>
