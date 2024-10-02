@@ -25,14 +25,14 @@ spec:
         - containerPort: 80
         readinessProbe:
           httpGet:
-            path: /
+            path: /index.html
             port: 80
           initialDelaySeconds: 5
           periodSeconds: 10
           timeoutSeconds: 3
         livenessProbe:
           httpGet:
-            path: /
+            path: /index.html
             port: 80
           initialDelaySeconds: 15
           periodSeconds: 20
