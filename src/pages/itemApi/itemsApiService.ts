@@ -1,9 +1,14 @@
 import axios from "axios";
 import { ApiItem } from "./useItemsContext";
 
+const baseUrl = import.meta.env.VITE_API_URL;
+
+if (!baseUrl) console.log("VITE_API_URL not set");
+else console.log(`VITE_API_URL is ${baseUrl}`);
+
 export const itemsApiService = {
   getAll: async () => {
-    const response = await fetch("http://localhost:5226/");
+    const response = await fetch(`${baseUrl}/`);
 
     const data: ApiItem[] = await response.json();
     return data;
@@ -17,6 +22,6 @@ export const itemsApiService = {
     //   }
     // });
 
-    await axios.post("http://localhost:5226/", newItem);
+    await axios.post(`${baseUrl}/`, newItem);
   },
 };

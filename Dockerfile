@@ -4,6 +4,8 @@ WORKDIR /app
 COPY package*.json ./
 RUN npm install
 COPY . .
+
+ENV VITE_API_URL http://api.alex-react.duckdns.org
 RUN npm run build
 
 FROM nginx:alpine
