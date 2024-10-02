@@ -18,11 +18,14 @@ jobs:
 
       - name: Build image
         run: |
-          docker build -t alexmickelson/alex-react:${{ github.run_number }} .
+          docker build \
+            -t alexmickelson/alex-react:${{ github.run_number }} \
+            -t alexmickelson/alex-react:latest \
+            .
 
       - name: Push image
         run: |
-          docker push alexmickelson/alex-react:${{ github.run_number }}
+          docker push alexmickelson/alex-react --all-tags
 
       - name: Deploy to Kubernetes
         run: |
