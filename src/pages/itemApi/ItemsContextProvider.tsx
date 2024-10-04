@@ -17,9 +17,9 @@ export const ItemsContextProvider: FC<{ children: ReactNode }> = ({
     });
   }, []);
 
-  const addItem = async (newItem: ApiItem) => {
+  const addItem = async (newItemOption: {name: string, id: number, file: File}) => {
     setIsLoading(true)
-    await itemsApiService.add(newItem);
+    await itemsApiService.add(newItemOption);
     const newItems = await itemsApiService.getAll();
     setItems(newItems);
     setIsLoading(false)

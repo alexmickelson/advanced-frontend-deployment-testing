@@ -3,11 +3,12 @@ import { createContext, useContext } from "react";
 export interface ApiItem {
   name: string;
   id: number;
+  imageFileName: string
 }
 
 export interface ItemsContextInterface {
   items: ApiItem[];
-  addItem: (item: ApiItem) => void;
+  addItem: (item: {name: string, id: number, file: File}) => void;
   isLoading: boolean;
 }
 
