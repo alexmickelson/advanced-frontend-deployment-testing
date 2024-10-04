@@ -1,0 +1,10 @@
+services:
+  api:
+    image: alexmickelson/alex-demo-api:latest
+    ports:
+    - 3001:8080
+    volumes:
+      - imagesVolume:/app/images
+
+volumes:
+  imagesVolume:

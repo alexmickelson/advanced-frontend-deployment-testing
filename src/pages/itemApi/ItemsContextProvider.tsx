@@ -17,12 +17,20 @@ export const ItemsContextProvider: FC<{ children: ReactNode }> = ({
     });
   }, []);
 
-  const addItem = async (newItem: ApiItem) => {
-    setIsLoading(true)
-    await itemsApiService.add(newItem);
+  const addItem = async ({
+    name,
+    id,
+    file,
+  }: {
+    name: string;
+    id: number;
+    file: File;
+  }) => {
+    setIsLoading(true);
+    await itemsApiService.add(id, name, file);
     const newItems = await itemsApiService.getAll();
     setItems(newItems);
-    setIsLoading(false)
+    setIsLoading(false);
   };
 
   return (
@@ -30,7 +38,7 @@ export const ItemsContextProvider: FC<{ children: ReactNode }> = ({
       value={{
         items,
         addItem,
-        isLoading
+        isLoading,
       }}
     >
       {children}
